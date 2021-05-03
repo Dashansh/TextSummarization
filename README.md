@@ -114,7 +114,7 @@ The encoder and decoder model are interconnected by the means of **Attention Mec
 
 
 
-The job of encoder is to store the information of complete sequence in a fixed length vector. The decoder is initialized with this vector and it produces output sequences. Sometimes, when the input sequence is large enough, the information of the past gets lost in the vector. Attention is a technique which considers encoder output at every time-step and decides how much information is to be carried forward to which decoder state. This makes sense, because in reality humans translate few words at a time rather than entire sentence at ones. The following figure is an example of one such attention mechanism known as Bahdanau Attention.
+The job of the encoder is to store the information of the complete sequence in a fixed-length vector. The decoder is initialized with this vector and it produces output sequences. Sometimes, when the input sequence is large enough, the information of the past gets lost in the vector. Attention is a technique which considers encoder output at every time-step and decides how much information is to be carried forward to which decoder state. This makes sense, because in reality humans translate few words at a time rather than entire sentence at ones. The following figure is an example of one such attention mechanism known as Bahdanau Attention.
 
 
 
