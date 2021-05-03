@@ -6,7 +6,7 @@ Text summarization, as the name suggests is the task to convert large pieces of 
 
 1. Extractive Summarization
 
-2. Abstractive Summarization
+2. Abstractive Summarization  
 
 
 
@@ -27,6 +27,8 @@ On the contrary, **Abstractive Summarization** reduces the length of the text wh
 
 
 Here, we have tested three different models of increasing complexity - Simple LSTM, Stacked LSTM, Attention with Stacked LSTM.
+
+<br />
 
 
 
