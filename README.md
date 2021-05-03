@@ -31,7 +31,6 @@ Here, we have tested three different models of increasing complexity - Simple LS
 <br />
 
 
-
 ## Dataset Description
 
 This dataset consists of reviews of fine foods from amazon. The data span a period of more than 10 years, including all ~500,000 reviews up to October 2012. Reviews include product and user information, ratings, and a plain text review. It also includes reviews from all other Amazon categories.
@@ -54,8 +53,8 @@ It consists of following columns: \['**Id**', '**ProductId**', '**UserId**', '**
 
 
 
-Data is available as a part of a [Kaggle competition](https://www.kaggle.com/snap/amazon-fine-food-reviews) and is stored in google drive for ease in access. <br />
-
+Data is available as a part of a [Kaggle competition](https://www.kaggle.com/snap/amazon-fine-food-reviews) and is stored in google drive for ease in access. 
+<br />
 
 
 ## Model Building
@@ -107,7 +106,9 @@ The decoder model is made up of-
 <br />
 
 The encoder and decoder models are interconnected by the means of the **Attention Mechanism**. 
+\
 <br />
+
 
 ## Output
 
@@ -154,6 +155,7 @@ Let's take a look at some of the predictions.
 **Predicted**:  good dog food.
 
 <br />
+
 
 ## Resources
 
