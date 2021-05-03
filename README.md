@@ -54,7 +54,7 @@ It consists of following columns: \['**Id**', '**ProductId**', '**UserId**', '**
 
 
 
-Data is available as a part of a [Kaggle competition](https://www.kaggle.com/snap/amazon-fine-food-reviews) and is stored in google drive for ease in access.
+Data is available as a part of a [Kaggle competition](https://www.kaggle.com/snap/amazon-fine-food-reviews) and is stored in google drive for ease in access. <br />
 
 
 
@@ -62,61 +62,55 @@ Data is available as a part of a [Kaggle competition](https://www.kaggle.com/sna
 
 The seq2seq model is an encoder decoder architecture.
 
-
+<br />
 
 The encoder model consists of following parts-
 
-
+<br />
 
 1. Embedding layer with latent dimension = 256
 
-* Input: (None, 80)
+   * Input: (None, 80)
+   * Output: (None, 80, 256)
 
-* Output: (None, 80, 256)
-
-
+<br />
 
 2. 3 LSTM layers stacked, with same latent dimension and same i/p and o/p size
+   * Input: (None, 80, 256)
+   * Output: "Hidden_state" - (None, 80, 256), "state_h" - (None, 256), "state_c" - (None, 256) 
 
-* Input: (None, 80, 256)
-
-* Output: "Hidden_state" - (None, 80, 256), "state_h" - (None, 256), "state_c" - (None, 256) 
-
-
+<br />
 
 The decoder model is made up of-
 
-
+<br />
 
 1. Embedding Layer with same latent dimension
 
-* Input: (None,) ***\*Note: Here we avoid specifying sequence length of summary, since in inference phase we would like to predict 1 word at a time.\****
+   * Input: (None,) **Note: Here we avoid specifying sequence length of summary, since in inference phase we would like to predict 1 word at a time.**
+   * Output: (None, None, 256)
 
-* Output: (None, None, 256)
-
-
+<br />
 
 2. LSTM layer
 
-* Input: (None, None, 256)
+   * Input: (None, None, 256)
+   * Output: "Hidden_state" - (None, None, 256), "state_h" - (None, 256), "state_c" - (None, 256)
 
-* Output: "Hidden_state" - (None, None, 256), "state_h" - (None, 256), "state_c" - (None, 256)
-
-
+<br />
 
 3. TimeDistributed Layer with softmax activation
 
-* Input: (None, None, 256)
+   * Input: (None, None, 256)
+   * Output: (None, None, 13871)
 
-* Output: (None, None, 13871)
-
-
+<br />
 
 The encoder and decoder model are interconnected by the means of **Attention Mechanism**. 
 
+<br />
 
-
-The job of the encoder is to store the information of the complete sequence in a fixed-length vector. The decoder is initialized with this vector and it produces output sequences. Sometimes, when the input sequence is large enough, the information of the past gets lost in the vector. Attention is a technique which considers encoder output at every time-step and decides how much information is to be carried forward to which decoder state. This makes sense, because in reality humans translate few words at a time rather than entire sentence at ones. The following figure is an example of one such attention mechanism known as Bahdanau Attention.
+Encoder of the model encodes the sequential information into a fixed-length vector. The decoder is initialized with this vector and it produces output sequences. Sometimes, when the input sequence is large enough, the information of the past gets lost in the vector. Attention is a technique which considers encoder output at every time-step and decides how much information is to be carried forward to which decoder state. This makes sense, because in reality humans translate few words at a time rather than entire sentence at ones. The following figure is an example of one such attention mechanism known as Bahdanau Attention.
 
 
 
@@ -128,7 +122,7 @@ The job of the encoder is to store the information of the complete sequence in a
 
 Let's take a look at some of the predications.
 
-
+<br />
 
 `"use get virginia peanuts family first year bought online company virginia gourment peanuts exactly expected purchasing"`
 
@@ -136,7 +130,7 @@ Let's take a look at some of the predications.
 
 **Predicted**:  peanut butter review.
 
-
+<br />
 
 `"cookies arrived fresh delicious usual good value plenty share understand use word necessary describe experience"`
 
@@ -144,7 +138,7 @@ Let's take a look at some of the predications.
 
 **Predicted**:  great cookies.
 
-
+<br />
 
 `"really loved pasta tastes like natural spaghetti without pain issues associated gluten many products would come mushy like oatmeal one tastes much like ordinary pasta cannot tell difference purchased bionaturae organic gluten free pasta heartland pasta increased price frequently stock longer subscribe save option product mentioned bionaturae pasta gives packs spaghetti still costs less choosing subscribe save bionaturae offered subscribe save also great reviews see turns measure heartland bit bullet order heartland product"`
 
@@ -152,7 +146,7 @@ Let's take a look at some of the predications.
 
 **Predicted**:  low carb pasta.
 
-
+<br />
 
 `"really way add creamer enhance flavor blend signed subscription delivered every month drink every morning work works great home cafe system"`
 
@@ -160,7 +154,7 @@ Let's take a look at some of the predications.
 
 **Predicted**:  great coffee.
 
-
+<br />
 
 `"neighborhood dogs walks piper dogs products always fresh consistent size color taste yes said taste read years ago people take snacks hiking share dogs human consumption quality tried maybe would prefer oreo bad test occasion see consistent natural soft peanut butter chews look like fig newtons stay fresh time open package till gone never want overdo snack fastest way cause obesity pet actually count cookies day put little tin keep helped control weight help remember many given"`
 
@@ -168,7 +162,7 @@ Let's take a look at some of the predications.
 
 **Predicted**:  good dog food.
 
-
+<br />
 
 ## Resources
 
