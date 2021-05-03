@@ -18,11 +18,11 @@ Consider below text,
 <br />
 
 
-**Extractive Summarization**, extracts phrases or words from the text and concatenates them to obtain a summary. Though this summary is grammatically less accurate. For example, with extractive summarization the above sentence is summarized as ```"Peter and Elizabeth attend party city. Elizabeth rushed hospital."``` The techniques involved here mostly fall under the set of unsupervised algorithms, for instance, Markov Chains, TextRank, Latent Semantic Analysis, Bayesian Topic Models and few of the many. They are computationally less intensive than their supervised counterparts. 
+**Extractive Summarization**, extracts phrases or words from the text and concatenates them to obtain a summary. Though this summary is grammatically less accurate. For example, with extractive summarization the above sentence is summarized as ```" Peter and Elizabeth attend party city. Elizabeth rushed hospital."``` The techniques involved here mostly fall under the set of unsupervised algorithms, for instance, Markov Chains, TextRank, Latent Semantic Analysis, Bayesian Topic Models, and few of the many. They are computationally less intensive than their supervised counterparts. 
 
 
 <br />
-On the contrary, **Abstractive Summarization** reduces the length of the text while making sure that the output feels more natural. For example, the same text is summarized here as ```"Elizabeth was hospitalized after attending a party with Peter."``` Deep Learning models that deals with sequential data like LSTM's are used here. They are called sequence-to-sequence models which are based on encoder decoder architectures. Since it involves sequential layers, the large number of parameters drastically increases training period. 
+On the contrary, **Abstractive Summarization** reduces the length of the text while making sure that the output feels more natural. For example, the same text is summarized here as ```"Elizabeth was hospitalized after attending a party with Peter."``` Deep Learning models that deal with sequential data like LSTM's are used here. They are called sequence-to-sequence models which are based on encoder-decoder architectures. Since it involves sequential layers, the large number of parameters drastically increases the training period. 
 
 
 
@@ -60,11 +60,11 @@ Data is available as a part of a [Kaggle competition](https://www.kaggle.com/sna
 
 ## Model Building
 
-The seq2seq model is an encoder decoder architecture.
+The seq2seq model is an encoder-decoder architecture.
 
 <br />
 
-The encoder model consists of following parts-
+The encoder model consists of the following parts-
 
 <br />
 
@@ -87,7 +87,7 @@ The decoder model is made up of-
 
 1. Embedding Layer with same latent dimension
 
-   * Input: (None,) **Note: Here we avoid specifying sequence length of summary, since in inference phase we would like to predict 1 word at a time.**
+   * Input: (None,) **Note: Here we avoid specifying sequence length of summary since in inference phase we would like to predict 1 word at a time.**
    * Output: (None, None, 256)
 
 <br />
@@ -106,20 +106,12 @@ The decoder model is made up of-
 
 <br />
 
-The encoder and decoder model are interconnected by the means of **Attention Mechanism**. 
-
+The encoder and decoder models are interconnected by the means of the **Attention Mechanism**. 
 <br />
-
-Encoder of the model encodes the sequential information into a fixed-length vector. The decoder is initialized with this vector and it produces output sequences. Sometimes, when the input sequence is large enough, the information of the past gets lost in the vector. Attention is a technique which considers encoder output at every time-step and decides how much information is to be carried forward to which decoder state. This makes sense, because in reality humans translate few words at a time rather than entire sentence at ones. The following figure is an example of one such attention mechanism known as Bahdanau Attention.
-
-<figure>
-    <img src='https://blog.floydhub.com/content/images/2019/09/Slide38.JPG' alt="Image not available" width="800" height="400">
-<figcaption>Image_credit: https://blog.floydhub.com/attention-mechanism/</figcaption>
-</figure>
 
 ## Output
 
-Let's take a look at some of the predications.
+Let's take a look at some of the predictions.
 
 <br />
 
